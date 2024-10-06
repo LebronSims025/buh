@@ -1,103 +1,38 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="styles.css"> </head>
-<body>
-    <header class="header">
-        <div class="border">
-        <h1 class="titles">Homesite of Work</h1>
-        <h2 class="titles">By Ismac</h2>
-      <audio src="https://ia800404.us.archive.org/2/items/youtube-m1H8zj2yfCk/m1H8zj2yfCk.webm" controls>
-            <p>
-                <em>
-                    <p id="demo"></p>
-                </em>
-            </p>
-        </div>
-    </header>
-    </body>
-    <body>
-    <main>
-<div class="loadiframe">
-    <button id="b1" data-src="https://codepen.io/Ismac333/full/ZEPLdEq">Rick Astley RPG</button>
-    <button id="b2" data-src="https://mountjustin.github.io/">Mount Justin</button>
-    <button id="b3" data-src="https://codepen.io/Ismac333/full/GRapVEp">Angry Demons</button>
-    <button id="b4" data-src="https://codepen.io/Ismac333/full/YzbwqGp">EarthDay</button>
-    <button id="b5" data-src="https://deathegg.life/">ShellShockers</button>
-</div>
-<iframe id='frame' frameborder="0" scrolling="no" width="1500" height="900"></iframe>
-    </main>
-    <styles>
-        /* Place your CSS styles in this file */
+# This code simulates the behavior of the provided HTML, CSS and Javascript code
 
-@import url(https://fonts.googleapis.com/css?family=Lato);
+def set_iframe_src(iframe, button_dataset_src):
+  """Sets the iframe source to the provided button dataset source
 
-button {
-  background-color:yellow;
-  margin:0 auto;
-}
+  Args:
+    iframe: The iframe element to modify
+    button_dataset_src: The dataset source from the clicked button
+  """
+  iframe.src = button_dataset_src
+  iframe.width = "1500px"
+  iframe.height = "900px"
 
-p {
-  display:none;
-}
+def iframe_change(buttons, iframe):
+  """Listens for clicks on buttons and sets the iframe source accordingly
 
-body{
-background-color:black;
-}
+  Args:
+    buttons: The container element holding the buttons
+    iframe: The iframe element to modify
+  """
+  buttons.addEventListener("click", lambda e: set_iframe_src(iframe, e.target.dataset.src)  if e.target.tagName == "BUTTON" else None)
 
-header  {
-  text-align: center;
-  text-transform: uppercase;
-  padding: 32px;
-  background-color: #27282e;
-  color: #83f50a;
-  border-bottom: 7px groove red;
-  font-family: 'Lato';
-}
+# Simulate the HTML structure
+buttons = []  # Simulate button container
+iframe = {"src": "", "width": "1500px", "height": "900px"}  # Simulate iframe element
 
-.border {
-    background-color:#021136;
-    border: 5px double cyan;
-    margin:0 auto;
-    padding:20px;
-    border-radius:90px;
-    width:400px;
-}
-button:hover {
-    background-color: #e7e0bc;
-    border-radius: 20px;
-    border:2px solid lime;
-    transition-duration: 1s;
-}
+# Simulate button creation (assuming data-src holds the iframe source)
+buttons.append({"data-src": "https://codepen.io/Ismac333/full/ZEPLdEq"})  # Rick Astley RPG
+buttons.append({"data-src": "https://mountjustin.github.io/"})  # Mount Justin
+buttons.append({"data-src": "https://codepen.io/Ismac333/full/GRapVEp"})  # Angry Demons
+buttons.append({"data-src": "https://codepen.io/Ismac333/full/YzbwqGp"})  # EarthDay
+buttons.append({"data-src": "https://deathegg.life/"})  # ShellShockers
 
-button:active {
-    background-color:purple;
-    border-radius:3px;
-    transition-duration: 1s;
-}
+# Simulate JavaScript functionality (window.onload)
+iframe_change(buttons, iframe)
 
-button:after {
-    background-color: yellow;
-}
-    </styles>
-    <script>
-        /* Place your JavaScript in this file */
-function iframeChange() {
-    var buttons = document.querySelector(".loadiframe");
-    var iframe = document.getElementById('frame');
-
-    buttons.addEventListener("click", function (e) {
-        if (e.target.tagName === "BUTTON") {
-            iframe.src = e.target.dataset.src;
-            iframe.width = "1500px"; // set the width to 925px
-            iframe.height = "900px"; // set the height to 800px
-        }
-    });
-}
-window.onload = iframeChange;
-//iframe set/change
-    </script>
-    </body>
-</html>
+# Print the simulated iframe element for reference
+print(iframe)
